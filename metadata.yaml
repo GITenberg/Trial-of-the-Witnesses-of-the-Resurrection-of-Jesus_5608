@@ -1,0 +1,26 @@
+_repo: Trial-of-the-Witnesses-of-the-Resurrection-of-Jesus_5608
+creator:
+  author:
+    agent_name: Sherlock, Thomas
+    alias: Sherlock, Bishop (Thomas)
+    birthdate: 1678
+    deathdate: 1761
+    gutenberg_agent_id: '1808'
+    url: http://www.gutenberg.org/2009/agents/1808
+    wikipedia: http://en.wikipedia.org/wiki/Thomas_Sherlock
+description: ''
+gutenberg_issued: '2004-05-01'
+gutenberg_type: Text
+identifiers:
+  gutenberg: '5608'
+language: en
+publisher: Project Gutenberg
+rights: Public domain in the USA.
+rights_url: http://creativecommons.org/about/pdm
+subjects:
+- !lcc 'BT'
+- !lcsh 'Woolston, Thomas, 1670-1733. Sixth discourse on the miracles of our Saviour'
+- !lcsh 'Jesus Christ -- Resurrection'
+- !lcsh 'Deism -- Controversial literature'
+title: Trial of the Witnesses of the Resurrection of Jesus
+url: http://www.gutenberg.org/ebooks/5608
