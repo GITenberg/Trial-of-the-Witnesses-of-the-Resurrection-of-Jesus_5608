@@ -1,0 +1,61 @@
+sudo: required
+dist: trusty
+language: ruby
+
+before_install:
+before_install:
+- gem install asciidoctor -v 1.5.2
+- gem install tilt
+- sudo pip install git+https://github.com/gitenberg-dev/gitberg
+- sudo pip install pillow
+- sudo pip install cssutils
+- sudo pip install docutils
+- sudo pip install roman
+- sudo pip install git+https://github.com/gitenberg-dev/pg-epubmaker
+script:
+- VERSION=`ruby -e "require 'yaml'; meta = YAML.load_file('metadata.yaml'); puts meta['_version'];"`
+- git clone https://github.com/gitenberg-dev/asciidoctor-htmlbook.git
+- sudo pip install -r asciidoctor-htmlbook/gitberg-machine/requirements.txt
+
+- /usr/bin/python -c "from gitenberg import travis; travis.build_epub()"
+- ebook-convert book.epub book.mobi
+- xvfb-run ebook-convert book.epub book.pdf
+branches:
+  only:
+  - master
+notifications:
+  webhooks:
+    urls:
+      - https://unglue.it/api/travisci/webhook
+    on_success: always
+    on_failure: never
+    on_start: never
+deploy:
+  skip_cleanup: true
+  provider: releases
+  api_key:
+    secure: D/Syw/D/rnWntOoL6NwTBfsa6XcjPXun3AP6n4yQFfGsmz9GfFV8a8ipc5C9HUtE0ZXVzcKa9BCwhwKYFn2VGCxyNLkwgH3naH23JPj3lBAVhIX9b8B8H6Vy8OkBOx1FFZ0XOXe5jrBIImBr+3zcNfLbqERHANCy6Un5KzWOxBVJG3IX7MXgi7kNcOS4drfa2B/L7BL1QkGdqpwraOPltU0ZYNXKWyzjroKvmMt1UL0rb4vdJN4wJrbsszhGyk81fm7C+OhzzkFmSua7nC5HIaGcs8z0EINjnnpE94Q3R1aAHkGlccibLUF3YkjWC/AyvUS7UAUVNiZiwPyCo7EsJZR9Dsut85zjNyYfWSgEoYAXqldVTfls39UFEzrqxTpueNoZHBd5xGNidyf8EKEe3rcHXMaoY5jDVn3/MG51xK7eCDwTLpUK/YfIW4j/I9PgjOqZ02ZyfOBGpmPxP6YiDGnnmde2i4DxeZ/iKjKkp7Ie5DxmVfB/qcxBo0nsicVPQc2SmEBfTb4BZmogx4LAmeqxzAKifS8ggb2w0PLRo/9hfsYYutjgNdhMPoGKmFmziK8QtTAukClxcx8/A5v2W1mQUMsEkpZm1x1xBW15C2x9zjI/M1ebm9+jfsso6eJStoVTIudxyPNoBY3TqpufSBtG7shD6ZRkTza+YNs5PHc=
+  file:
+    - book.epub
+    - book.mobi
+    - book.pdf
+  "on":
+    repo: GITenberg/Trial-of-the-Witnesses-of-the-Resurrection-of-Jesus_5608
+addons:
+  apt:
+    packages:
+    - xsltproc
+    - xvfb
+    - calibre
+    - python-pip
+    - git
+    - python-dev
+    - libjpeg-dev
+    - libpng-dev
+    - libfreetype6
+    - libfreetype6-dev
+    - zlib1g-dev
+    - python-lxml
+    - libxml2-dev
+    - libxslt1-dev
+    - tidy
