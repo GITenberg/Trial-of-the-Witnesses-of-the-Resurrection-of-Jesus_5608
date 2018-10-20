@@ -1,5 +1,5 @@
 _repo: Trial-of-the-Witnesses-of-the-Resurrection-of-Jesus_5608
-_version: 0.2.0
+_version: 0.2.1
 covers:
 - cover_type: generated
   image_path: cover.png
@@ -28,5 +28,6 @@ subjects:
 - !lcsh 'Woolston, Thomas, 1670-1733. Sixth discourse on the miracles of our Saviour'
 - !lcsh 'Jesus Christ -- Resurrection'
 - !lcsh 'Deism -- Controversial literature'
+- GITenberg
 title: Trial of the Witnesses of the Resurrection of Jesus
 url: http://www.gutenberg.org/ebooks/5608
